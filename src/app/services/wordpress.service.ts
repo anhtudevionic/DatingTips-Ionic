@@ -8,15 +8,13 @@ import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig, AdMobFre
   providedIn: 'root'
 })
 export class WordpressService {
-  //url = `https://englishwebserve.xyz/wp-json/wp/v2/`;
   url : string;
   urlcategories= `https://www.zoosk.com/date-mix/wp-json/wp/v2/categories/`;
-  urlcate = `https://englishwebserve.xyz/wp-json/wp/v2/posts?categories=11`;
   totalPosts = null;
   totalPosts2 = null;
   pages: any;
   categories: any;
-  testADS = true;
+  testADS = false;
   constructor( private http: HttpClient, private admobFree: AdMobFree ) { }
   getPosts(page = 1): Observable<any[]> {
     let options = {

@@ -14,7 +14,8 @@ export class HomePage implements OnInit {
   listcategories: any;
   urlHome = `https://www.zoosk.com/date-mix/wp-json/wp/v2/`;
   urlcategories= `https://englishwebserve.xyz/wp-json/wp/v2/posts?categories=11`;
-  posts = [];
+  //posts = [];
+  posts : any;
   page = 1;
   count = null;
   start: any = 0;
@@ -38,15 +39,15 @@ export class HomePage implements OnInit {
   }
   
   async loadPosts() {
-    let loading = await this.loadingCtrl.create({
-      message: 'Loading Data...'
-    });
-    await loading.present();
+    // let loading = await this.loadingCtrl.create({
+    //   message: 'Loading Data...'
+    // });
+    // await loading.present();
  
     this.wp.getPosts().subscribe(res => {
       this.count = this.wp.totalPosts;
       this.posts = res;
-      loading.dismiss();
+      //loading.dismiss();
     });
   }
  
@@ -75,10 +76,10 @@ export class HomePage implements OnInit {
     console.log("===>"+ listposts);
     
 
-    let loading = await this.loadingCtrl.create({
-      message: 'Loading Data...'
-    });
-    await loading.present();
+    // let loading = await this.loadingCtrl.create({
+    //   message: 'Loading Data...'
+    // });
+    // await loading.present();
  
     this.wp.getpostsCategories(1, listposts).subscribe(res => {
       this.count = this.wp.totalPosts;
@@ -87,7 +88,7 @@ export class HomePage implements OnInit {
       this.posts = res;
       console.log(res);
       
-      loading.dismiss();
+      //loading.dismiss();
     });
   }
 }
