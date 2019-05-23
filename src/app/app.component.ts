@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
+
 export class AppComponent {
   constructor(
     private platform: Platform,
@@ -19,7 +20,8 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      //this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString("#7044ff");
       this.splashScreen.hide();
     });
   }

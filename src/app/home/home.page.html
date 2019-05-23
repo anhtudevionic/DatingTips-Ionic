@@ -1,14 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header >
+  
+    <ion-title>Dating Tips - Relationships</ion-title>
+ 
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-card *ngFor="let post of posts" [routerLink]="['/', 'posts', post.id]">
+    <ion-card-header>
+      <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+      <ion-card-subtitle>{{ post.date_gmt | date }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="post.media_url">
+      <div [innerHTML]="post.excerpt.rendered"></div>
+      <ion-button expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right>Read More...</ion-button>
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more posts...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
+
+<ion-footer >
+    <ion-segment scrollable (ionChange)="segmentChanged($event)" >
+        <ion-segment-button checked>
+          <ion-label (click)="home()">Home</ion-label>
+        </ion-segment-button>
+        <ion-segment-button *ngFor="let list of listcategories">
+          <ion-label (click)="postsdanhmuc(list._links)">{{list.name}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+</ion-footer>

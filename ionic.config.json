@@ -1,5 +1,7 @@
 {
   "name": "DatingTips",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
